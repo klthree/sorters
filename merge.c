@@ -12,7 +12,7 @@ void sort (int array[], int start, int end)
     merge(array, start, mid, mid + 1, end);
 }
 
-void merge (int array[], int low, mid1, mid2, end)
+void merge (int array[], int low, int mid1, int mid2, int end)
 {
 
 }
