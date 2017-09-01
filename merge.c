@@ -2,54 +2,67 @@
  * Use merge sort to sort an array
  */
 
-void sort (int array[], int start, int end)
+#include "sorters.h"
+
+void sort (int array[], int mergerArray[], int start, int end)
 {
-    int mid = (start + end) / 2;
-    int size = end - start;
+    int mid;
 
-    sort (array, start, mid);
-    sort (array, mid + 1, end);
+    if (start < end)
+    {
+        mid = (start + end) / 2;
 
-    merge(array, size, start, mid, mid + 1, end);
+        sort (array, mergerArray, start, mid);
+        sort (array, mergerArray, mid + 1, end);
+
+        merge (array, mergerArray, start, mid, end);
+    }
+    else
+    {
+        return;
+    }
 }
 
-void merge (int array[], int size, int low, int mid1, int mid2, int end)
+void merge (int array[], int mergerArray[], int start, int mid, int end)
 {
-    int left = low;
-    int right = mid2;
-    int mergeDex = low;
+    int leftIndex = start;
+    int rightIndex = mid + 1;
+    int mergerIndex = start;
 
-    int merger[size];
-
-    while (left <= mid1 && right <= end)
+    while (leftIndex <= mid && rightIndex <= end)
     {
-        if (array[left] < array[right])
+        if (array[leftIndex] <= array[rightIndex])
         {
-            merger[mergeDex] = array[left];
+            mergerArray[mergerIndex] = array[leftIndex];
+
+            mergerIndex++;
+            leftIndex++;
         }
         else
         {
-            merger[mergeDex] = array[right];
+            mergerArray[mergerIndex] = array[rightIndex];
+
+            mergerIndex++;
+            rightIndex++;
         }
-
-        left++;
-        right++;
-        mergeDex++;
     }
 
-    while (left <= mid1)
+    while (leftIndex < mid + 1)
     {
-        merger[mergeDex] = array[left];
-
-        left++;
-        mergeDex++;
+        mergerArray[mergerIndex] = array[leftIndex];
+        mergerIndex++;
+        leftIndex++;
     }
 
-    while (right <= mid1)
+    while (rightIndex <= end)
     {
-        merger[mergeDex] = array[right];
+        mergerArray[mergerIndex] = array[rightIndex];
+        mergerIndex++;
+        rightIndex++;
+    }
 
-        right++;
-        mergeDex++;
+    for (int i = start; i <= end; i++)
+    {
+        array[i] = mergerArray[i];
     }
 }
