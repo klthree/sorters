@@ -7,16 +7,17 @@
 /**
  * Function mergeSort to recursively sort array into halves while calling merge function
  */
-void mergeSort (int array[], int mergerArray[], int start, int end)
+void mergeSort (int array[], int size, int start, int end)
 {
+    int mergerArray[size];
     int mid;
 
     if (start < end)
     {
         mid = (start + end) / 2;
 
-        mergeSort (array, mergerArray, start, mid);
-        mergeSort (array, mergerArray, mid + 1, end);
+        mergeSort (array, size, start, mid);
+        mergeSort (array, size, mid + 1, end);
 
         merge (array, mergerArray, start, mid, end);
     }
