@@ -1,4 +1,4 @@
-void selection(int array[], int size)
+void selectionSort (int array[], int size)
 {
     int lowestIndex;
     for (int i = 0; i < size - 1; i++)
