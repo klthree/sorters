@@ -6,7 +6,7 @@
  * Merge sort
  */
 
-void mergeSort (int array[], int mergerArray[], int start, int end);
+void mergeSort (int array[], int size, int start, int end);
 void merge (int array[], int mergerArray[], int start, int mid, int end);
 
 /**
@@ -26,3 +26,15 @@ void selectionSort (int array[], int size);
  */
 
 void bubbleSort (int array[], int size);
+
+/**
+ * Binary search
+ */
+
+void binarySearch(int array[], int size, int value);
+
+/**
+ * Counting sort
+ */
+
+void countingSort (int array[], int size);
